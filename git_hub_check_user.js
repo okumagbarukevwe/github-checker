@@ -4,27 +4,24 @@ const request = require('request');
 
 app.set('view engine', 'ejs');
 
-var options = {
-  url: 'https://api.github.com/users/okumagbarukevwe',
-  headers: {
-    'User-Agent': 'request'
-  }
-};
+
 
 app.get('/', function(req, res){
     res.render('search')
 });
 
 app.get('/result', function(req, res){
+  let searchedUser = req.query.username
+  var options = {
+    url: 'https://api.github.com/users/' + searchedUser,
+    headers: {
+      'User-Agent': 'request'
+    }
+  };
     request(options, function(error, response, body){
         if (!error && response.statusCode == 200){
             let info = JSON.parse(body);
-            console.log(info['login'])
-            // res.send(info['login'])
-            res.send(info['avatar_url'])
-            // res.send(info['id'])
-            // res.send(info['followers'])
-            // res.send(info['following'])
+            res.render('result', {data: info})
         }
     });
     

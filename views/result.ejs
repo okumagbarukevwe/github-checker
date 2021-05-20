@@ -1,0 +1,16 @@
+<center><div class="main-div">
+<img style="width: 80px; border-radius: 10px;" src="<%= data['avatar_url']%>" alt="">
+<p style="font-size: 40px;"><%= data['login'] %></p>
+<p><a href="<%= data['html_url'] %>">Github Link </p></a>
+<p>Followers:<%= data['followers'] %> &nbsp;&nbsp; Following:<%= data['following'] %></p>
+<p>Total Repos: <%= data['public_repos'] %></p>
+</div></center>
+
+<style>body{
+    font-family:sans-serif;
+    background-color: rgb(226, 231, 235);
+}
+.main-div{
+    padding-top: 70px;
+}
+</style>
